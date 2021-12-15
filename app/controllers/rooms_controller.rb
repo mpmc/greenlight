@@ -423,7 +423,7 @@ class RoomsController < ApplicationController
 
     # Does not apply to admin or users that aren't signed in
     # 15+ option is used as unlimited
-    return false if current_user&.has_role?(:admin) || limit == 15
+    return false if !current_user&.has_role?(:user) || limit == 15
 
     current_user.rooms.length >= limit
   end
